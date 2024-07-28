@@ -9,15 +9,16 @@
  import { GoPerson , GoSearch, GoLocation} from "react-icons/go";
  import { FaCartShopping } from "react-icons/fa6";
  import { BsCurrencyDollar } from "react-icons/bs";
- import { useNavigate } from 'react-router-dom'
+ import { json, useNavigate } from 'react-router-dom'
  import { useState } from 'react'
  import './Logout.css'
+import CartItems from './cartInfo'
 
   
 
 function DashBoard(){
 
-    const [popUp , setPopUp] = useState(false)
+    const [popUp, setPopUp] = useState(false)
     const navigate = useNavigate()
     const user =  localStorage.getItem('username')
     let userName = JSON.parse(user)
@@ -34,17 +35,17 @@ const items = [
         {label: 'White_Tshirt' , id : 8 , cost: '400' , img: White_Tshirt  },
     ]
 
-    const addToCart = []
-    const AddToCart = (index) =>{
-      const itemIndex = addToCart.findIndex((ele) => ele.id === items[index].id )
-      if(itemIndex > -1 ){
-        return
-      }else{
-        addToCart.push(items[index])
-        const string = JSON.stringify(addToCart)
-        localStorage.setItem("cartItems" , string)
-      }
-      console.log("Cart Items " , addToCart)
+    const AddToCart = (index) => {
+    let res = JSON.parse(localStorage.getItem('cartItems')) || [];
+        
+    const itemIndex = res.findIndex((ele) => ele.id === items[index].id )
+    if(itemIndex > -1 ){
+    return
+    } else {
+    res.push(items[index])
+        const jsonString = JSON.stringify(res)
+        localStorage.setItem("cartItems", jsonString)
+    }
     }
 
     function handeClick(){

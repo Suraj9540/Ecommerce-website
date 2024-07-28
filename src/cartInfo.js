@@ -2,9 +2,12 @@ import { RenderItems } from "./renderItem"
 
 
 function CartItems(){
-
+   
+  
   const cartValue =  localStorage.getItem('cartItems')
-  let items = JSON.parse(cartValue)
+    let items = JSON.parse(cartValue)
+    console.log( typeof items , items , 'items')
+ 
  
     return(
         <div>
