@@ -1,11 +1,12 @@
 import { RenderItems } from "./renderItem"
 
 
-function CartItems(){
 
-  const cartValue =  localStorage.getItem('cartItems')
-  let items = JSON.parse(cartValue)
- 
+function CartItems() {
+    
+    const cartValue = localStorage.getItem('cartItems')
+    let cartItem = JSON.parse(cartValue)
+       
     return(
         <div>
             <div className="navbar">
@@ -13,9 +14,8 @@ function CartItems(){
                     <h1 className="text-3xl font-bold" >Cart Items</h1>
                 </div>
             </div>
-             
-            <div >
-              <RenderItems items={items}/>
+            <div >     
+                {cartItem === null ? 'No Cart item Are Available' : <RenderItems items={cartItem} />}
             </div> 
         </div>
     )
