@@ -9,10 +9,10 @@
  import { GoPerson , GoSearch, GoLocation} from "react-icons/go";
  import { FaCartShopping } from "react-icons/fa6";
  import { BsCurrencyDollar } from "react-icons/bs";
- import { json, useNavigate } from 'react-router-dom'
+ import { useNavigate } from 'react-router-dom'
  import { useState } from 'react'
  import './Logout.css'
-import CartItems from './cartInfo'
+
 
   
 
@@ -20,8 +20,10 @@ function DashBoard(){
 
     const [popUp, setPopUp] = useState(false)
     const navigate = useNavigate()
-    const user =  localStorage.getItem('username')
-    let userName = JSON.parse(user)
+    const user =  localStorage.getItem('userInfo')
+    let userDetail = JSON.parse(user)
+    
+
  
     
 const items = [
@@ -37,7 +39,6 @@ const items = [
 
     const AddToCart = (index) => {
     let res = JSON.parse(localStorage.getItem('cartItems')) || [];
-        
     const itemIndex = res.findIndex((ele) => ele.id === items[index].id )
     if(itemIndex > -1 ){
     return
@@ -47,6 +48,7 @@ const items = [
         localStorage.setItem("cartItems", jsonString)
     }
     }
+     
 
     function handeClick(){
         navigate('/cartitems')
@@ -72,7 +74,7 @@ const items = [
                 <img className='bg-cover bg-center h-4/6 w-full mt-2' alt='image!' src={item.img}/>
                 <div className='flex text-base ml-2 mt-4'>
                 <div className='flex items-center'><BsCurrencyDollar/>{item.cost}</div>
-                <button className='ml-20' onClick={() => AddToCart(index)}>Add To Cart</button>
+                <button className='ml-20' onClick={() => AddToCart(item.id)}>Add To Cart</button>
                 </div>
             </div>
 
@@ -84,7 +86,7 @@ const items = [
             <div className='navbar bg-gray-600 h-12 flex justify-between items-center text-white'>
                 <div className='flex text-lg' >
                      <GoPerson className='ml-2 mt-1.5' /> 
-                     <button className=''>{userName}</button>
+                     <button className=''>{userDetail[0].name}</button>
                  </div>   
                  <div  className='flex'>
                      <input className='h-2/4 w-60 rounded'/>
@@ -110,7 +112,7 @@ const items = [
            { popUp && ( <div className="modal">
                  <div onClick={handleLogOut} className="overlay"></div>
                       <div className="modal-content">
-                      <h2 className='username'>{userName}</h2>
+                      <h2 className='username'>{userDetail[0].name}</h2>
                       <p className='text'>Are You Want to Logout</p>
                   <div>
                       <button className='yes' onClick={() => handleLogOut("Yes")}>Yes</button>
