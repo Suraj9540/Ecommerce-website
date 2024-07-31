@@ -10,4 +10,5 @@ function ProtectRoute(){
     return isLoggedIn === null ? <Navigate to="/"/> : <Outlet/>
 }
 
+
 export default ProtectRoute
