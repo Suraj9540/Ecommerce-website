@@ -10,15 +10,14 @@ function LoginPage(){
    const navigate = useNavigate()
    const userInfo = []
 
-
    function handleLogin(userName , password){
       if(userName === '' || password === ''){
          alert("fill all the information first")
       }else{
-         userInfo.push({user : userName , pass: password})
+         userInfo.push({name : userName , pass: password})
          navigate('/dashboard')
-         const user = JSON.stringify(userName)
-         localStorage.setItem("username" , user)
+         const user = JSON.stringify(userInfo)
+         localStorage.setItem("userInfo" , user)
       }
    }
 
