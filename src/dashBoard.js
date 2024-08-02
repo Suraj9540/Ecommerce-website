@@ -10,7 +10,7 @@
  import { FaCartShopping } from "react-icons/fa6";
  import { BsCurrencyDollar } from "react-icons/bs";
  import { useNavigate } from 'react-router-dom'
- import { useState } from 'react'
+ import {  useState } from 'react'
  import './Logout.css'
 
 
@@ -22,8 +22,22 @@ function DashBoard(){
     const navigate = useNavigate()
     const user =  localStorage.getItem('userInfo')
     let userDetail = JSON.parse(user)
+    const [addedItem , setAddedItem] = useState(JSON.parse(localStorage.getItem('cartItems')) || [])
     
 
+    function getButtonText(product) {
+        let text = "Add To Cart";
+        
+        if (addedItem.length) {
+        let findInd = addedItem.findIndex(item => {
+            return item.id === product.id
+        })
+        if (findInd > -1) {
+            text = "Remove from Cart"
+        }
+    }
+        return text;
+    }
  
     
 const items = [
@@ -38,14 +52,20 @@ const items = [
     ]
 
     const AddToCart = (index) => {
-    let res = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const itemIndex = res.findIndex((ele) => ele.id === items[index].id )
-    if(itemIndex > -1 ){
-    return
-    } else {
-    res.push(items[index])
-        const jsonString = JSON.stringify(res)
-        localStorage.setItem("cartItems", jsonString)
+        console.log(addedItem , '55')
+    // let res = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const itemIndex = addedItem.findIndex((ele) => ele.id === items[index].id )
+        if(itemIndex > -1 ){
+            return 
+        } else {
+            // res.push(items[index])
+            // setAddedItem.push(items[index])
+            let newI = [...addedItem];
+            newI.push(items[index])
+            setAddedItem(newI)
+            const jsonString = JSON.stringify(newI)
+            localStorage.setItem("cartItems", jsonString)
+        
     }
     }
      
@@ -74,7 +94,7 @@ const items = [
                 <img className='bg-cover bg-center h-4/6 w-full mt-2' alt='image!' src={item.img}/>
                 <div className='flex text-base ml-2 mt-4'>
                 <div className='flex items-center'><BsCurrencyDollar/>{item.cost}</div>
-                <button className='ml-20' onClick={() => AddToCart(item.id)}>Add To Cart</button>
+                <button className='ml-20' onClick={() => AddToCart(index)}>{getButtonText(item)}</button>
                 </div>
             </div>
 
