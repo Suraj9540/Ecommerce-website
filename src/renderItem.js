@@ -4,7 +4,7 @@ import { useState } from "react";
 export function RenderItems({ items }) {
 
     const [prevItem, setPrevItem] = useState(items)
-    console.log('prevItem' , prevItem)
+
 
     function incrementCount(cartItem) {
         setPrevItem((prev) => 
