@@ -24,6 +24,7 @@ function DashBoard(){
     let userDetail = JSON.parse(user)
     const [addedItem , setAddedItem] = useState(JSON.parse(localStorage.getItem('cartItems')) || [])
     
+    console.log('cart items' , addedItem)
 
     function getButtonText(product) {
         let text = "Add To Cart";
@@ -41,22 +42,27 @@ function DashBoard(){
  
     
 const items = [
-        {label: 'Clothes' , id : 1 , cost: '500' , img: Clothes  },
-        {label: 'Cargo_Pant' , id : 2 , cost: '600' , img: Cargo_Pant },
-        {label: 'Men_Hockey_Sport' , id : 3 , cost: '1200', img: Men_Hockey_Sport },
-        {label: 'Samsung_S23' , id : 4 , cost: '80000' , img: Samsung_S23  },
-        {label: 'Stailor_Shirt' , id : 5 , cost: '1000', img: Stailor_Shirt },
-        {label: 'Track_Field_Tshirt' , id : 6 , cost: '650', img: Track_Field_Tshirt },
-        {label: 'Track_suit' , id : 7 , cost: '950' , img: Track_suit },
-        {label: 'White_Tshirt' , id : 8 , cost: '400' , img: White_Tshirt  },
+        {label: 'Clothes' , id : 1 , cost: '500' , img: Clothes , count : 1 },
+        {label: 'Cargo_Pant' , id : 2 , cost: '600' , img: Cargo_Pant , count : 1 },
+        {label: 'Men_Hockey_Sport' , id : 3 , cost: '1200', img: Men_Hockey_Sport , count : 1 },
+        {label: 'Samsung_S23' , id : 4 , cost: '80000' , img: Samsung_S23 , count : 1 },
+        {label: 'Stailor_Shirt' , id : 5 , cost: '1000', img: Stailor_Shirt , count : 1 },
+        {label: 'Track_Field_Tshirt' , id : 6 , cost: '650', img: Track_Field_Tshirt , count : 1 },
+        {label: 'Track_suit' , id : 7 , cost: '950' , img: Track_suit , count : 1 },
+        {label: 'White_Tshirt' , id : 8 , cost: '400' , img: White_Tshirt , count : 1 },
     ]
 
     const AddToCart = (index) => {
-        console.log(addedItem , '55')
+        
     // let res = JSON.parse(localStorage.getItem('cartItems')) || [];
-        const itemIndex = addedItem.findIndex((ele) => ele.id === items[index].id )
-        if(itemIndex > -1 ){
-            return 
+        const itemIndex = addedItem.findIndex((ele) => ele.id === items[index].id)
+        console.log(itemIndex , 'itemIndex')
+        if (itemIndex > -1) {
+            let arr1 = [...addedItem]
+            let updatedCartItems = arr1.filter(item => item.id !== items[index].id)
+            setAddedItem(updatedCartItems)
+            const updatedValue = JSON.stringify(updatedCartItems)
+            localStorage.setItem("cartItems" , updatedValue)
         } else {
             // res.push(items[index])
             // setAddedItem.push(items[index])
