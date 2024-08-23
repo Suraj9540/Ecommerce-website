@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+
+  body.active-modal {
+    overflow-y: hidden;
+}
+
+.modal-1, .overlay-1{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay-1{
+    background: rgba(159, 157, 157, 0.8);
+}
+
+.content{
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background-color: #fff
+}
+
+.top{
+    height: 150px;
+    width: 100%;
+}
+
+
+
+.first-half{
+    height: 100px;
+    width: 90%;
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+}   
+
+.profile-image{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+
+.userName{
+  margin-left: 10px;
+  font-family: cursive;
+  font-weight: 400; 
+  font-size: large;
+}
+
+.close-button{
+    margin-left: 120px;
+    background: none;
+    border: none;
+    font-size: x-large;   
+}
+
+
+.second-half{
+    height: 50px;
+    width: 90%;
+    border-bottom: 1px solid;
+    border-bottom-color: darkgray ;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.emoji{
+    font-size: x-large;
+    margin-left: 20px;
+    color: rgb(90, 87, 87);
+    margin-right: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.status{
+   color: rgb(90, 87, 87);
+   font-weight: bold;
+}
+
+/* middle content */
+
+.middle-content{
+    height: 130px;
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-bottom: 1px solid;
+    border-bottom-color: darkgray ;
+}
+
+.middle-content div{
+    display: flex;
+    align-items: center;
+}
+
+.mid-emoji{
+    font-size: large;
+    color: rgb(90, 87, 87);
+    cursor: pointer;
+    margin-right: 6px;
+    margin-left: 20px;
+}
+
+
+.middle-content div p{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* half-mid */
+
+.contact{
+    height: 100px;
+    width: 90%;
+    margin-top: 30px;
+    margin-left: 10px;
+    border-bottom: 1px solid;
+    border-bottom-color: darkgray ;
+}
+
+.contact-emoji{
+    font-size: large;
+    color: rgb(90, 87, 87);
+    cursor: pointer;
+    margin-right: 6px;
+    margin-left: 20px;
+}
+
+.contact div{
+    display: flex;
+    align-items: center;
+}
+
+.contact div p{
+    margin-bottom: 20px;
+}
+
+/* Sign Out */
+
+.Sign-out{
+    height: 60px;
+    width: 90%;
+    margin-top: 30px;
+    margin-left: 10px;
+    border-bottom: 1px solid;
+    border-bottom-color: darkgray ;
+}
+
+.Sign-out div{
+    display: flex;
+    align-items: center;
+}
+
+.sign-out-icon{
+    font-size: large;
+    color: rgb(90, 87, 87);
+    cursor: pointer;
+    margin-right: 6px;
+    margin-left: 20px;
+}
