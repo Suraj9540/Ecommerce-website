@@ -1,12 +1,14 @@
 import './index.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { IoEyeSharp , IoEyeOffSharp  } from "react-icons/io5";
 
 
 function LoginPage(){
 
    const[ userName , setUserName] = useState('')
    const[ password , setPassword] = useState('')
+   const [showPassword , setShowPassword] =useState(false)
    const navigate = useNavigate()
    const userInfo = []
 
@@ -21,6 +23,17 @@ function LoginPage(){
       }
    }
 
+   function handlePassword(e){
+        setPassword(e.target.value)  
+   }
+   function handleShowPassword(){
+      if(showPassword === false){
+         setShowPassword(true)
+      }else{
+         setShowPassword(false)
+      }
+   }
+   
 
 
  return <div className='h-screen w-screen bg-gray-200 flex justify-center items-center'>
@@ -35,8 +48,9 @@ function LoginPage(){
          <div className='pt-12 pl-8 '>
             <input className='input' placeholder='UserName' value={userName} onChange={(e) => setUserName(e.target.value)}/>
          </div>
-         <div className='pt-8 pl-8'>
-            <input className='input' placeholder='password' value={password} onChange={(e) =>setPassword(e.target.value)}/>
+         <div className='pt-8 pl-8 flex items-center'>
+            <input className='input'  type={showPassword ? 'text' : 'password'}  placeholder='password' value={password} onChange={handlePassword}/>
+            <button className='text-base' onClick={handleShowPassword}>{showPassword  ? <IoEyeOffSharp /> : <IoEyeSharp />}</button>
          </div>
              {/* login button */}
          <div className='flex justify-center mt-4 w-28 ml-20 rounded-full bg-gray-200'>
