@@ -49,8 +49,8 @@ function LoginPage(){
             <input className='input' placeholder='UserName' value={userName} onChange={(e) => setUserName(e.target.value)}/>
          </div>
          <div className='pt-8 pl-8 flex items-center'>
-            <input className='input'  type={showPassword ? 'text' : 'password'}  placeholder='password' value={password} onChange={handlePassword}/>
-            <button className='text-base' onClick={handleShowPassword}>{showPassword  ? <IoEyeOffSharp /> : <IoEyeSharp />}</button>
+            <input className='input w-40'  type={showPassword ? 'text' : 'password'}  placeholder='password' value={password} onChange={handlePassword}/>
+            <button className='text-xl' onClick={handleShowPassword}>{showPassword  ? <IoEyeSharp /> : <IoEyeOffSharp />}</button>
          </div>
              {/* login button */}
          <div className='flex justify-center mt-4 w-28 ml-20 rounded-full bg-gray-200'>

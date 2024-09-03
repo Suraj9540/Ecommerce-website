@@ -178,3 +178,12 @@
     margin-right: 6px;
     margin-left: 20px;
 }
+
+.Add-account{
+    font-size: large;
+    color: rgb(90, 87, 87);
+    cursor: pointer;
+    margin-right: 6px;
+    margin-left: 20px;
+    margin-top: 5px;
+}

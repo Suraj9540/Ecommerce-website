@@ -6,6 +6,7 @@ function CartItems() {
     
     const cartValue = localStorage.getItem('cartItems')
     let cartItem = JSON.parse(cartValue)
+
        
     return(
         <div>
@@ -15,7 +16,7 @@ function CartItems() {
                 </div>
             </div>
             <div >     
-                {cartItem === null ? 'No Cart item Are Available' : <RenderItems items={cartItem} />}
+                {cartItem.length === 0 ? 'No Cart item Are Available' : <RenderItems items={cartItem} />}
             </div> 
         </div>
     )
