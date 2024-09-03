@@ -222,7 +222,7 @@ const items = [
                             <button className="status" onClick={handleAddAccount}>Add account</button>
                         </div>
                         <div>
-                            <p className="contact-emoji"><GoPeople /></p>handleAddAccount
+                            <p className="contact-emoji"><GoPeople /></p>
                             <p className="status">Contact Us</p>
                         </div>
                     </div>
