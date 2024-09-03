@@ -47,7 +47,6 @@ function DashBoard(){
 
     function getButtonText(product) {
         let text = "Add To Cart";
-        
         if (addedItem.length) {
         let findInd = addedItem.findIndex(item => {
             return item.id === product.id
@@ -75,7 +74,7 @@ const items = [
         
     // let res = JSON.parse(localStorage.getItem('cartItems')) || [];
         const itemIndex = addedItem.findIndex((ele) => ele.id === items[index].id)
-        console.log(itemIndex , 'itemIndex')
+        
         if (itemIndex > -1) {
             let arr1 = [...addedItem]
             let updatedCartItems = arr1.filter(item => item.id !== items[index].id)
@@ -109,8 +108,8 @@ const items = [
 
   function handleLogOut(choose){
     if(choose === "Yes"){
-        navigate('/')
         localStorage.clear()
+        navigate('/')
     }else{
         setPopUp(false)
     }
@@ -118,6 +117,13 @@ const items = [
 
   function handleProfile(){
     setProfile(true)
+ }
+
+
+ function handleAddAccount(){
+    localStorage.clear()
+    navigate('/')
+
  }
 
  function handleCloseProfile(){
@@ -211,12 +217,12 @@ const items = [
                 </div>
                 <div>
                     <div className="contact">
-                        <div>
-                            <p className="contact-emoji"><GoPersonAdd /></p>
-                            <p className="status">Add account</p>
+                        <div className=''>
+                            <p className="sign-out-icon"><GoPersonAdd /></p>
+                            <button className="status" onClick={handleAddAccount}>Add account</button>
                         </div>
                         <div>
-                            <p className="contact-emoji"><GoPeople /></p>
+                            <p className="contact-emoji"><GoPeople /></p>handleAddAccount
                             <p className="status">Contact Us</p>
                         </div>
                     </div>
